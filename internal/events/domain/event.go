@@ -3,6 +3,8 @@ package domain
 import (
 	"errors"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 var (
@@ -33,10 +35,30 @@ type Event struct {
 	Date         time.Time `json:"date"`
 	ImageURL     string `json:"image_url"`
 	Capacity     int    `json:"capacity"`
-	Price        int    `json:"price"`
+	Price        float64    `json:"price"`
 	PartnerID    int `json:"partner_id"`
 	Spots        []Spot `json:"spots"`
 	Tickets			 []Ticket `json:"tickets"`
+}
+
+func CreatedNewEvent(name, location, organization string, rating Rating, date time.Time, imageURL string, capacity int, price float64, partnerID int) (*Event, error) {
+	event := &Event{
+		ID:           uuid.New().String(),
+		Name:         name,
+		Location:     location,
+		Organization: organization,
+		Rating:       rating,
+		Date:         date,
+		ImageURL:     imageURL,
+		Capacity:     capacity,
+		Price:        price,
+		PartnerID:    partnerID,
+		Spots: 			make([]Spot, 0),
+	}
+	if err := event.Validade(); err != nil {
+		return nil, err
+	}
+	return event, nil
 }
 
 func (e Event) Validade() error {
