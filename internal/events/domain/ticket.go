@@ -27,7 +27,7 @@ type Ticket struct {
 	ID           string       `json:"id"`
 	EventID      string       `json:"event_id"`
 	Spot         *Spot        `json:"spot"`
-	TicketKind TicketStatus `json:"ticket_status"`
+	TicketKind TicketStatus `json:"ticket_kind"`
 	Price        float64      `json:"price"`
 }
 
