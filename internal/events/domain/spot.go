@@ -13,6 +13,7 @@ var (
 	ErrSportNameFormatInit = errors.New("spot name must start with a capital letter")
 	ErrSportNameFormatEnd = errors.New("spot name must end with a number")
 	ErrSpotEventIDNotFount = errors.New("spot not found in event")
+	ErrorSpotNotFound = errors.New("spot not found")
 	ErrorSpotAlreadyReserved = errors.New("spot is already reserved")
 )
 
